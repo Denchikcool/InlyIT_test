@@ -1,0 +1,20 @@
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL
+);
+
+INSERT INTO users (name) VALUES ('Terminator T-1000'), ('David Bowie'), ('Killmister'), ('John Doe');
+
+CREATE TABLE products (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL
+);
+
+INSERT INTO products (name) VALUES ('Мотоцикл'), ('Пулемёт Гатлинг'), ('Микрофон'), ('Виски');
+
+CREATE TABLE cart (
+  id SERIAL PRIMARY KEY,
+  user_id INT REFERENCES users(id),
+  product_id INT REFERENCES products(id),
+  quantity INT NOT NULL DEFAULT 1
+);
